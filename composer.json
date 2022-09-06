@@ -1,0 +1,33 @@
+{
+  "name": "hopeofiran/avanak-laravel",
+  "type": "library",
+  "description": "This package helps us to use Avanak services.",
+  "keywords": ["avanak", "avanak laravel", "avanak voice message", "avanak sms"],
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "require": {
+    "PHP": ">=5.6,<8.2"
+  },
+  "authors": [
+    {
+      "name": "Omid Mehri",
+      "email": "thehopeofiran@gmail.com",
+      "homepage": "https://github.com/hopeofiran/"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "hopeofiran\\avanak\\Providers\\AvanakProvider"
+      ]
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "hopeofiran\\avanak-laravel\\": "src"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
