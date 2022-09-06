@@ -52,9 +52,9 @@ class Avanak
      *
      * @return $this
      */
-    public function backUrl(string $url)
+    public function baseUrl(string $url)
     {
-        $this->config('backUrl', $url);
+        $this->config('baseUrl', $url);
         return $this;
     }
 
