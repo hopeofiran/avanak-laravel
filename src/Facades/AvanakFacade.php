@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Avanak config($key, $value = null)
  * @method static getCredit(): string
  * @method static sendOtp(int $length, string $number, string $text, int $serverId = 0): string
- * @method static uploadMessage(string $title, string $file, bool $persist = false, string $callFromMobile = null): string
+ * @method static uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null): string
  * @method static generateTTS2(string $title, string $text, string $persist = Avanak::MALE_SPEAKER, string $callFromMobile = null): string
  *
  */

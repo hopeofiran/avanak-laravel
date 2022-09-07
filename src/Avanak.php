@@ -134,18 +134,18 @@ class Avanak
     }
 
     /**
-     * @param               $title
-     * @param               $file
-     *
+     * @param  string       $title
+     * @param  string       $filePath
      * @param  bool         $persist
      * @param  string|null  $callFromMobile
      *
      * @return string
      * @throws \SoapFault
      */
-    public function uploadMessage(string $title, string $file, bool $persist = false, string $callFromMobile = null)
+    public function uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null)
     {
         $client = $this->client();
+        $file = file_get_contents($filePath);
         $param = [
             'userName'       => $this->config['username'],
             'password'       => $this->config['password'],
