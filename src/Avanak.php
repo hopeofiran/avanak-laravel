@@ -232,4 +232,31 @@ class Avanak
             return $e->getMessage();
         }
     }
+
+    /**
+     * @param  string  $number
+     * @param  int     $messageId
+     * @param  int     $serverId
+     * @param  bool    $vote
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function quickSend(string $number, int $messageId, int $serverId = 0, bool $vote = false)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'  => $this->config['username'],
+            'password'  => $this->config['password'],
+            'number'    => $number,
+            'messageId' => $messageId,
+            'serverid'  => $serverId,
+            'vote'      => $vote,
+        ];
+        try {
+            return $client->QuickSend($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
