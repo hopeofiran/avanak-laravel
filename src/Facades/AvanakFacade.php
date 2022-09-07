@@ -3,6 +3,7 @@
 namespace hopeofiran\avanak\Facades;
 
 use hopeofiran\avanak\Avanak;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static sendOtp(int $length, string $number, string $text, int $serverId = 0): string
  * @method static uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null): string
  * @method static generateTTS2(string $title, string $text, string $persist = Avanak::MALE_SPEAKER, string $callFromMobile = null): string
+ * @method static CreateCampaign(string $title, array $numbers, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false): string
  *
  */
 class AvanakFacade extends Facade

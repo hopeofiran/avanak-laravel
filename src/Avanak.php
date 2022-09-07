@@ -3,6 +3,7 @@
 namespace hopeofiran\avanak;
 
 use Cassandra\Exception;
+use Illuminate\Support\Carbon;
 use SoapClient;
 
 class Avanak
@@ -183,6 +184,50 @@ class Avanak
         ];
         try {
             return $client->GenerateTTS2($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
+     * @param  string                      $title
+     * @param                              $numbers
+     * @param  int                         $maxTryCount
+     * @param  int                         $minuteBetweenTries
+     * @param  \Illuminate\Support\Carbon  $start
+     * @param  \Illuminate\Support\Carbon  $end
+     * @param  int                         $messageId
+     * @param  bool                        $removeInvalids
+     * @param  int                         $serverId
+     * @param  bool                        $autoStart
+     * @param  bool                        $vote
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function createCampaign(string $title, $numbers, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false)
+    {
+        $numbers = is_array($numbers) ? implode(',', $numbers) : $numbers;
+        $client = $this->client();
+        $param = [
+            'userName'           => $this->config['username'],
+            'password'           => $this->config['password'],
+            'title'              => $title,
+            'numbers'            => $numbers,
+            'maxTryCount'        => $maxTryCount,
+            'minuteBetweenTries' => $minuteBetweenTries,
+            'startDate'          => $start->format('Y-m-d'),
+            'endDate'            => $end->format('Y-m-d'),
+            'startTime'          => $start->format('H:i:s'),
+            'endTime'            => $end->format('H:i:s'),
+            'messageId'          => $messageId,
+            'removeInvalids'     => $removeInvalids,
+            'serverId'           => $serverId,
+            'autoStart'          => $autoStart,
+            'vote'               => $vote,
+        ];
+        try {
+            return $client->CreateCampaign($param);
         } catch (Exception $e) {
             return $e->getMessage();
         }
