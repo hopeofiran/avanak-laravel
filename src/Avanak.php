@@ -259,6 +259,17 @@ class Avanak
             return $e->getMessage();
         }
     }
+
+    /**
+     * @param  string       $number
+     * @param  string       $text
+     * @param  int          $serverId
+     * @param  bool         $vote
+     * @param  string|null  $callFromMobile
+     *
+     * @return string
+     * @throws \SoapFault
+     */
     public function quickSendWithTTS(string $number, string $text, int $serverId = 0, bool $vote = false, string $callFromMobile = null)
     {
         $client = $this->client();
