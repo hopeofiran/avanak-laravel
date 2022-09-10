@@ -389,7 +389,7 @@ class Avanak
     }
 
     /**
-     * @param  int  $subscribeId
+     * @param  array  $campaignNumberIds
      *
      * @return string
      * @throws \SoapFault
@@ -399,12 +399,34 @@ class Avanak
         $campaignNumberIds = implode(',', $campaignNumberIds);
         $client = $this->client();
         $param = [
-            'userName' => $this->config['username'],
-            'password' => $this->config['password'],
+            'userName'          => $this->config['username'],
+            'password'          => $this->config['password'],
             'campaignNumberIds' => $campaignNumberIds,
         ];
         try {
             return $client->GetCampaignNumbersDataByIds($param);
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
+    /**
+     * @param  array  $campaignNumberIds
+     *
+     * @return \Cassandra\Exception|\Exception
+     * @throws \SoapFault
+     */
+    public function getCampaignNumbersStatusByIds(array $campaignNumberIds)
+    {
+        $campaignNumberIds = implode(',', $campaignNumberIds);
+        $client = $this->client();
+        $param = [
+            'userName'          => $this->config['username'],
+            'password'          => $this->config['password'],
+            'campaignNumberIds' => $campaignNumberIds,
+        ];
+        try {
+            return $client->GetCampaignNumbersStatusByIds($param);
         } catch (Exception $e) {
             return $e;
         }
