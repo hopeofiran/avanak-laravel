@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static createCampaign(string $title, array $numbers, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false): string
  * @method static stopCampaign(int $campaignId): string
  * @method static getCampaignById(int $campaignId): string
+ * @method static getCampaignsByDate(Carbon $from, Carbon $to): string
  * @method static quickSend(string $number, int $messageId, int $serverId = 0, bool $vote = false): string
  * @method static quickSendWithTTS(string $number, string $text, int $serverId = 0, bool $vote = false, string $callFromMobile = null): string
  *
