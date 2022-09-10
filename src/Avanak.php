@@ -320,6 +320,31 @@ class Avanak
     }
 
     /**
+     * @param  int  $messageId
+     * @param  int  $lastId
+     * @param  int  $count
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getCampaignNumbersByMessageId(int $messageId, int $lastId = 0, int $count = 0)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'  => $this->config['username'],
+            'password'  => $this->config['password'],
+            'messageId' => $messageId,
+            'lastid'    => $lastId,
+            'count'     => $count,
+        ];
+        try {
+            return $client->GetCampaignNumbersByMessageId($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * @param  string  $number
      * @param  int     $messageId
      * @param  int     $serverId
