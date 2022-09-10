@@ -255,6 +255,27 @@ class Avanak
     }
 
     /**
+     * @param  int  $campaignId
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getCampaignById(int $campaignId)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'   => $this->config['username'],
+            'password'   => $this->config['password'],
+            'campaignId' => $campaignId,
+        ];
+        try {
+            return $client->GetCampaignById($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * @param  string  $number
      * @param  int     $messageId
      * @param  int     $serverId
