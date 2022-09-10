@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static getCampaignsByDate(Carbon $from, Carbon $to): string
  * @method static getCampaignNumbersByCampaignId(int $campaignId): string
  * @method static getCampaignNumbersByMessageId(int $messageId, int $lastId = 0, $count = 0): string
+ * @method static getCampaignNumbersBySendDate(Carbon $from, Carbon $to): string
  * @method static quickSend(string $number, int $messageId, int $serverId = 0, bool $vote = false): string
  * @method static getQuickSend(string $quickSendId): string
  * @method static quickSendWithTTS(string $number, string $text, int $serverId = 0, bool $vote = false, string $callFromMobile = null): string

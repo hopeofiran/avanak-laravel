@@ -345,6 +345,29 @@ class Avanak
     }
 
     /**
+     * @param  \Illuminate\Support\Carbon  $from
+     * @param  \Illuminate\Support\Carbon  $to
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getCampaignNumbersBySendDate(Carbon $from, Carbon $to)
+    {
+        $client = $this->client();
+        $param = [
+            'userName' => $this->config['username'],
+            'password' => $this->config['password'],
+            'fromDate' => $from->format('Y-m-d'),
+            'toDate'   => $to->format('Y-m-d'),
+        ];
+        try {
+            return $client->GetCampaignNumbersBySendDate($param);
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
+    /**
      * @param  string  $number
      * @param  int     $messageId
      * @param  int     $serverId
