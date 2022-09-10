@@ -259,4 +259,22 @@ class Avanak
             return $e->getMessage();
         }
     }
+    public function quickSendWithTTS(string $number, string $text, int $serverId = 0, bool $vote = false, string $callFromMobile = null)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'       => $this->config['username'],
+            'password'       => $this->config['password'],
+            'number'         => $number,
+            'text'           => $text,
+            'serverid'       => $serverId,
+            'vote'           => $vote,
+            'callFromMobile' => $callFromMobile,
+        ];
+        try {
+            return $client->QuickSendWithTTS($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
