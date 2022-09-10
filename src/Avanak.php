@@ -326,6 +326,28 @@ class Avanak
     }
 
     /**
+     * @param  int  $quickSendId
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getQuickSend(int $quickSendId)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'    => $this->config['username'],
+            'password'    => $this->config['password'],
+            'quickSendId' => $quickSendId,
+            'price'       => true,
+        ];
+        try {
+            return $client->GetQuickSend($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * @param  string       $number
      * @param  string       $text
      * @param  int          $serverId
