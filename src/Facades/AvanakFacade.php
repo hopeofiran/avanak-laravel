@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null): string
  * @method static generateTTS2(string $title, string $text, string $persist = Avanak::MALE_SPEAKER, string $callFromMobile = null): string
  * @method static createCampaign(string $title, array $numbers, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false): string
+ * @method static stopCampaign(int $campaignId): string
  * @method static quickSend(string $number, int $messageId, int $serverId = 0, bool $vote = false): string
  * @method static quickSendWithTTS(string $number, string $text, int $serverId = 0, bool $vote = false, string $callFromMobile = null): string
  *
