@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Facade;
  *
  * @package Shetabit\Payment\Facade
  *
- * @method static Avanak baseUrl($url)
- * @method static Avanak config($key, $value = null)
+ * @method static Avanak baseUrl(string $url)
+ * @method static Avanak config(string $key, string $value = null)
  * @method static getCredit(): string
  * @method static sendOtp(int $length, string $number, string $text, int $serverId = 0): string
  * @method static uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null): string
  * @method static generateTTS2(string $title, string $text, string $persist = Avanak::MALE_SPEAKER, string $callFromMobile = null): string
  * @method static createCampaign(string $title, array $numbers, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false): string
+ * @method static createCampaignGIS(string $title, $numbers, string $GISCroods, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false): string
  * @method static stopCampaign(int $campaignId): string
  * @method static getCampaignById(int $campaignId): string
  * @method static getCampaignsByDate(Carbon $from, Carbon $to): string

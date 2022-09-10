@@ -234,6 +234,52 @@ class Avanak
     }
 
     /**
+     * @param  string                      $title
+     * @param                              $numbers
+     * @param  string                      $GISCroods
+     * @param  int                         $maxTryCount
+     * @param  int                         $minuteBetweenTries
+     * @param  \Illuminate\Support\Carbon  $start
+     * @param  \Illuminate\Support\Carbon  $end
+     * @param  int                         $messageId
+     * @param  bool                        $removeInvalids
+     * @param  int                         $serverId
+     * @param  bool                        $autoStart
+     * @param  bool                        $vote
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function createCampaignGIS(string $title, $numbers, string $GISCroods, int $maxTryCount, int $minuteBetweenTries, Carbon $start, Carbon $end, int $messageId, bool $removeInvalids = false, int $serverId = 0, bool $autoStart = false, bool $vote = false)
+    {
+        $numbers = is_array($numbers) ? implode(',', $numbers) : $numbers;
+        $client = $this->client();
+        $param = [
+            'userName'           => $this->config['username'],
+            'password'           => $this->config['password'],
+            'title'              => $title,
+            'numbers'            => $numbers,
+            'maxTryCount'        => $maxTryCount,
+            'GISCroods'          => $GISCroods,
+            'minuteBetweenTries' => $minuteBetweenTries,
+            'startDate'          => $start->format('Y-m-d'),
+            'endDate'            => $end->format('Y-m-d'),
+            'startTime'          => $start->format('H:i:s'),
+            'endTime'            => $end->format('H:i:s'),
+            'messageId'          => $messageId,
+            'removeInvalids'     => $removeInvalids,
+            'serverId'           => $serverId,
+            'autoStart'          => $autoStart,
+            'vote'               => $vote,
+        ];
+        try {
+            return $client->CreateCampaignGIS($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * @param  int  $campaignId
      *
      * @return string
