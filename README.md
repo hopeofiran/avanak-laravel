@@ -24,7 +24,7 @@ $credit = \hopeofiran\avanak\Facades\AvanakFacade::config('username', "{$your_us
 ->config('password', "{$your_password}")
 ->getCredit();
 ```
-###OR
+### OR
 ```php
 $credit = \hopeofiran\avanak\Facades\AvanakFacade::config(['username'=>"{$your_username}", 'password' => "{$your_password}"])
 ->getCredit();
