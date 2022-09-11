@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Facade;
  * @package Shetabit\Payment\Facade
  *
  * @method static Avanak baseUrl(string $url)
- * @method static Avanak config(string $key, string $value = null)
+ * @method static Avanak config($keys, string $value = null)
  * @method static getCredit(): string
  * @method static sendOtp(int $length, string $number, string $text, int $serverId = 0): string
  * @method static uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null): string

@@ -32,16 +32,16 @@ class Avanak
      * Set custom configs
      * we can use this method when we want to use dynamic configs
      *
-     * @param $key
+     * @param $keys
      * @param $value  |null
      *
      * @return $this
      */
-    public function config($key, $value = null)
+    public function config($keys, $value = null)
     {
         $configs = [];
-        $key     = is_array($key) ? $key : [$key => $value];
-        foreach ($key as $k => $v) {
+        $keys     = is_array($keys) ? $keys : [$keys => $value];
+        foreach ($keys as $k => $v) {
             $configs[$k] = $v;
         }
         $this->config = array_merge((array) $this->config, $configs);
