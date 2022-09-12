@@ -637,6 +637,13 @@ class Avanak
         }
     }
 
+    /**
+     * @param  \Illuminate\Support\Carbon  $from
+     * @param  \Illuminate\Support\Carbon  $to
+     *
+     * @return \Cassandra\Exception|\Exception
+     * @throws \SoapFault
+     */
     public function getTotalCostByDate(Carbon $from, Carbon $to)
     {
         $client = $this->client();
