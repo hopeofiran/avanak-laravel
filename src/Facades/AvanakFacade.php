@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Facade;
  * @package Shetabit\Payment\Facade
  *
  * @method static Avanak baseUrl(string $url)
- * @method static Avanak config($keys, string $value = null)
+ * @method static Avanak config(string|array $keys, string $value = null)
  * @method static getCredit(): string
  * @method static sendOtp(int $length, string $number, string $text, int $serverId = 0): string
  * @method static uploadMessage(string $title, string $filePath, bool $persist = false, string $callFromMobile = null): string
@@ -31,6 +31,10 @@ use Illuminate\Support\Facades\Facade;
  * @method static quickSend(string $number, int $messageId, int $serverId = 0, bool $vote = false): string
  * @method static getQuickSend(string $quickSendId): string
  * @method static quickSendWithTTS(string $number, string $text, int $serverId = 0, bool $vote = false, string $callFromMobile = null): string
+ * @method static getMessages(): string
+ * @method static getMessage(int $messageId): string
+ * @method static deleteMessage(int $messageId): string
+ * @method static downloadMessage(int $messageId): string
  *
  */
 class AvanakFacade extends Facade

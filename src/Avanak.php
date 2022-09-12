@@ -555,4 +555,85 @@ class Avanak
             return $e->getMessage();
         }
     }
+
+    /**
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getMessages()
+    {
+        $client = $this->client();
+        $param = [
+            'userName' => $this->config['username'],
+            'password' => $this->config['password'],
+        ];
+        try {
+            return $client->GetMessages($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
+     * @param  int  $messageId
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getMessage(int $messageId)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'  => $this->config['username'],
+            'password'  => $this->config['password'],
+            'messageId' => $messageId,
+        ];
+        try {
+            return $client->GetMessage($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
+     * @param  int  $messageId
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function deleteMessage(int $messageId)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'  => $this->config['username'],
+            'password'  => $this->config['password'],
+            'messageId' => $messageId,
+        ];
+        try {
+            return $client->DeleteMessage($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
+     * @param  int  $messageId
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function downloadMessage(int $messageId)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'  => $this->config['username'],
+            'password'  => $this->config['password'],
+            'messageId' => $messageId,
+        ];
+        try {
+            return $client->DownloadMessage($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
