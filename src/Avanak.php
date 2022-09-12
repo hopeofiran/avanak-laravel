@@ -636,4 +636,20 @@ class Avanak
             return $e->getMessage();
         }
     }
+
+    public function getTotalCostByDate(Carbon $from, Carbon $to)
+    {
+        $client = $this->client();
+        $param = [
+            'userName' => $this->config['username'],
+            'password' => $this->config['password'],
+            'fromDate' => $from->format('Y-m-d'),
+            'toDate'   => $to->format('Y-m-d'),
+        ];
+        try {
+            return $client->GetTotalCostByDate($param);
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
 }
