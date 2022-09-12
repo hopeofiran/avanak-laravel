@@ -677,4 +677,29 @@ class Avanak
             return $e;
         }
     }
+
+    /**
+     * @param  string  $number
+     * @param  string  $callbackUrl
+     * @param  int     $serverId
+     *
+     * @return \Cassandra\Exception|\Exception
+     * @throws \SoapFault
+     */
+    public function sendOCV(string $number, string $callbackUrl, int $serverId = 0)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'    => $this->config['username'],
+            'password'    => $this->config['password'],
+            'number'      => $number,
+            'callbackUrl' => $callbackUrl,
+            'serverId'    => $serverId,
+        ];
+        try {
+            return $client->SendOCV($param);
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
 }
