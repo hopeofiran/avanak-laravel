@@ -659,4 +659,22 @@ class Avanak
             return $e;
         }
     }
+
+    /**
+     * @return \Cassandra\Exception|\Exception
+     * @throws \SoapFault
+     */
+    public function getTransactions()
+    {
+        $client = $this->client();
+        $param = [
+            'userName' => $this->config['username'],
+            'password' => $this->config['password'],
+        ];
+        try {
+            return $client->GetTransactions($param);
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
 }

@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static deleteMessage(int $messageId): string
  * @method static downloadMessage(int $messageId): string
  * @method static getTotalCostByDate(Carbon $from, Carbon $to): string
+ * @method static getTransactions(): string
  *
  */
 class AvanakFacade extends Facade
