@@ -575,6 +575,33 @@ class Avanak
     }
 
     /**
+     * @param  bool    $showPersist
+     * @param  int     $count
+     * @param  int     $currentPage
+     * @param  string  $order
+     *
+     * @return string
+     * @throws \SoapFault
+     */
+    public function getMessagesByPage(bool $showPersist, int $count, int $currentPage, string $order)
+    {
+        $client = $this->client();
+        $param = [
+            'userName'    => $this->config['username'],
+            'password'    => $this->config['password'],
+            'showPersist' => $showPersist,
+            'count'       => $count,
+            'currentpage' => $currentPage,
+            'order'       => $order,
+        ];
+        try {
+            return $client->GetMessagesByPage($param);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    /**
      * @param  int  $messageId
      *
      * @return string
